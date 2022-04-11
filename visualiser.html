@@ -1,0 +1,145 @@
+<h2>Arctica Visualiser <strong>Round <span id="rnd">0</span></h2>
+
+<canvas id="chaos" width="900" height="900" style="border:3px solid #333;float:left;">
+
+</canvas>
+
+<div style="float:left;padding:20px">
+	
+	<strong><span style="color:red;">&#9604;</span> Player 1</strong><br/>
+	Population: <span id="Population0"></span><br/>
+		TravellingUnits: <span id="TravellingUnits0"></span><br/>
+		LumberingUnits: <span id="LumberingUnits0"></span><br/>
+		MiningUnits: <span id="MiningUnits0"></span><br/>
+		FarmingUnits: <span id="FarmingUnits0"></span><br/>
+		AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
+		
+		Wood: <span id="Wood0"></span><br/>
+		Food: <span id="Food0"></span><br/>
+		Stone: <span id="Stone0"></span><br/>
+		Heat: <span id="Heat0"></span><br/>
+	<br/>
+</div>	
+	<div style="float:left;padding:20px">
+	
+	<strong><span style="color:blue;">&#9604;</span> Player 2</strong><br/>
+		Population: <span id="Population1"></span><br/>
+		TravellingUnits: <span id="TravellingUnits1"></span><br/>
+		LumberingUnits: <span id="LumberingUnits1"></span><br/>
+		MiningUnits: <span id="MiningUnits1"></span><br/>
+		FarmingUnits: <span id="FarmingUnits1"></span><br/>
+		AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
+		
+		Wood: <span id="Wood1"></span><br/>
+		Food: <span id="Food1"></span><br/>
+		Stone: <span id="Stone1"></span><br/>
+		Heat: <span id="Heat1"></span><br/>
+	<br/>
+</div>
+
+<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Last Round" />
+<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
+<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
+
+<script>
+	let round=0;
+	let gameData;
+	let scoutData;
+	let nodeData;
+	let botData;
+	let mapfactor = 20; //Scaling the xy of the whole map xy by 10
+	let outer=50;
+	let pc=["red","blue","orange","purple"];
+	
+	let ix,iy;
+	
+	fetch("GameStateLog.json")
+    .then(Response => Response.json())
+    .then(data => {
+        alert("JSON Loaded");
+		gameData=data;
+		drawRound(0);
+    });
+	
+	var c=document.getElementById("chaos");
+	var ctx=c.getContext("2d");
+	ctx.font = "12px Arial";
+	
+	//a = change in rounds
+	function drawRound(a){
+		round=round+a;
+		scoutData=gameData[round].World.Map.ScoutTowers;
+		for (var key in scoutData) {
+			ix=scoutData[key].Position.X*mapfactor;
+			iy=scoutData[key].Position.Y*mapfactor;
+			
+			ctx.beginPath();
+			ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
+			ctx.fillStyle="black";
+			ctx.strokeStyle = 'black';
+			ctx.fill();
+			ctx.stroke();
+			}
+		
+		nodeData=gameData[round].World.Map.Nodes;
+		
+		for (var key in nodeData) {
+			ix=nodeData[key].Position.X*mapfactor;
+			iy=nodeData[key].Position.Y*mapfactor;
+			iu=nodeData[key].CurrentUnits;
+			
+			ctx.beginPath();
+			ctx.rect(outer+ix-6, outer+iy-6, 12, 12);
+			
+			if(nodeData[key].Type==1){ctx.fillStyle="brown";}
+			if(nodeData[key].Type==2){ctx.fillStyle="green";}
+			if(nodeData[key].Type==3){ctx.fillStyle="gray";}
+			
+			ctx.strokeStyle = 'black';
+			ctx.fill();
+			ctx.stroke();
+			
+			if(iu>0){
+				ctx.fillStyle="yellow";
+				ctx.strokeStyle = 'black';
+				ctx.fillRect(outer+ix-3, outer+iy-14, 20, 14);
+				ctx.strokeText(iu, outer+ix-3, outer+iy-3);
+				}
+			
+			}
+		
+		botData=gameData[round].Bots;
+		document.getElementById("rnd").innerHTML = round;
+		//alert(JSON.stringify(botData));
+		
+		for (var key in botData) {
+			
+			ix=botData[key].BaseLocation.X*mapfactor;
+			iy=botData[key].BaseLocation.Y*mapfactor;
+			
+			document.getElementById("Population"+key).innerHTML = botData[key].Population;
+			document.getElementById("TravellingUnits"+key).innerHTML = botData[key].TravellingUnits;
+			document.getElementById("LumberingUnits"+key).innerHTML = botData[key].LumberingUnits;
+			document.getElementById("MiningUnits"+key).innerHTML = botData[key].MiningUnits;
+			document.getElementById("FarmingUnits"+key).innerHTML = botData[key].FarmingUnits;
+			document.getElementById("AvailableUnits"+key).innerHTML = botData[key].AvailableUnits;
+			document.getElementById("Wood"+key).innerHTML = botData[key].Wood;
+			document.getElementById("Food"+key).innerHTML = botData[key].Food;
+			document.getElementById("Stone"+key).innerHTML = botData[key].Stone;
+			document.getElementById("Heat"+key).innerHTML = botData[key].Heat;
+			
+			ctx.beginPath();
+			ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
+			ctx.fillStyle=pc[key];
+			ctx.strokeStyle = 'black';
+			ctx.fill();
+			ctx.stroke();
+			}
+	}
+	
+	function clearRound(){
+		ctx.clearRect(0, 0, c.width, c.height);
+	}
+	
+</script>
+
