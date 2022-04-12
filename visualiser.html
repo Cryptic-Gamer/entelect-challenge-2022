@@ -37,10 +37,23 @@
 	<br/>
 </div>
 
-<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Last Round" />
+<input type="file" id="file-input" />
+<div>
+<input type="button" name="drawRound" onclick="clearRound();viewFirstRound();" value="First Round" />
+<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Previous Round" /><br/>
+<input type="number" min=0 max=2500 name="GoTo" value="50" id="inGoTo"/><input type="button" name="drawRound" onclick="clearRound();GoToRound();" value="Go To Round" /><br/>
 <input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
+<input type="button" name="drawRound" onclick="clearRound();viewLastRound();" value="Last Round" /><br/>
 <input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
+<div>
 
+<div>
+<h3>Play</h3>
+<label for="PlaySpeed">Speed (tps)</label> <input type="number" min=1 max=300 name="PlaySpeed" value="50" id="inSpeed"/>
+<input type="button" name="clearRound" onclick="Play(false)" value="Play" />
+<input type="button" name="clearRound" onclick="Pause()" value="Pause" />
+<input type="button" name="clearRound" onclick="Play(true)" value="Play from start" />
+</div>
 <script>
 	let round=0;
 	let gameData;
@@ -52,21 +65,53 @@
 	let pc=["red","blue","orange","purple"];
 	
 	let ix,iy;
-	
-	fetch("GameStateLog.json")
-    .then(Response => Response.json())
-    .then(data => {
-        alert("JSON Loaded");
-		gameData=data;
-		drawRound(0);
-    });
-	
+		
 	var c=document.getElementById("chaos");
 	var ctx=c.getContext("2d");
 	ctx.font = "12px Arial";
+	var playTmr;
+	
+	function viewFirstRound(){
+		round=0;
+		drawRound(0);
+	}
+	
+	function GoToRound(){
+	
+		let newround = document.getElementById("inGoTo").value;	
+		round = parseInt(newround);
+		drawRound(0);
+	}
+	function viewLastRound(){
+		round=gameData.length-1;
+		drawRound(0);
+	}
+	function Play(fromStart){		
+		if (fromStart){
+			round=0;
+		}
+		let speed = document.getElementById("inSpeed").value;
+		playTmr=setInterval(PlayTimer, (1.0/speed)*1000);
+	}
+	
+	function PlayTimer(){
+		if (round < gameData.length-1){
+			clearRound();
+			drawRound(1);
+		}
+		else{
+			window.clearInterval(playTmr)
+		}
+		
+	}
+	
+	function Pause(){
+		window.clearInterval(playTmr);
+	}
 	
 	//a = change in rounds
 	function drawRound(a){
+	
 		round=round+a;
 		scoutData=gameData[round].World.Map.ScoutTowers;
 		for (var key in scoutData) {
@@ -105,7 +150,9 @@
 				ctx.fillRect(outer+ix-3, outer+iy-14, 20, 14);
 				ctx.strokeText(iu, outer+ix-3, outer+iy-3);
 				}
-			
+			ctx.fillStyle="white";
+				ctx.strokeStyle = 'black';
+				ctx.strokeText(nodeData[key].Amount, outer+ix-3, outer+iy+13);
 			}
 		
 		botData=gameData[round].Bots;
@@ -141,5 +188,24 @@
 		ctx.clearRect(0, 0, c.width, c.height);
 	}
 	
+	function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result;
+    gameData=JSON.parse(contents);
+	drawRound(0);
+	
+  };
+  reader.readAsText(file);
+}
+
+
+
+document.getElementById('file-input')
+  .addEventListener('change', readSingleFile, false);
 </script>
 
