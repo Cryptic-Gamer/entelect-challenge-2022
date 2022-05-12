@@ -10,6 +10,8 @@ This is just a bare minimum to get me started with the real fun.
 
 
 Troubleshooting:
+If nothing happens after selecting a file or you get an error in the developer console, try using firefox. If you still get an error in firefox... I don't know.
+
 My Screen is 4K, so the map might be too large for your setup. 
 In this case you might want to half all the variables for mapfactor as well as any ctx.rect
 
