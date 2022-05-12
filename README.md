@@ -2,18 +2,11 @@
 Just a very basic visualiser for the Entelect Challenge 2022
 
 Using the Visualiser:
-Copy any Match Replay file from the entelect challenge logger:
-example: 
-GameStateLog_2022-04-05_02-51-59_GameComplete.json
+Open the HTML file in your browse, click the browse button top right (or below the players depending on screen size) and select the log file to replay.
+Note: You have to disable compact logging by going to the appsettings.json file of the logger and setting "CondencedLoggingToggle":  "false"
 
-Rename the file to:
-GameStateLog.json
-
-If the visualiser.html file is in the same directory it will run the match, 
-I will add some updates later if it is needed for my own development process (Like showing the state of scouting)
-
-As a last note Im not very high on Graphicsl Development. 
-Jus is just a bare minimum to get me started with the real fun. 
+As a last note Im not very high on Graphics Development. 
+This is just a bare minimum to get me started with the real fun. 
 
 
 Troubleshooting:
@@ -27,10 +20,5 @@ becomes:
 ctx.rect(outer+ix-5, outer+iy-5, 10, 10);
 
 I will probably handle scaling a little better later. 
-
-Lastly if you cannot run the visualiser and its caused by cors:
-Create a chrome shortcut containing the --disable-web-security parameter at the end of the path. 
-
-Cors has some known issues running localhosted files (Its because I am reading the gamestate JSON)
 
 If anyone has a better approach, feel free to reach out
