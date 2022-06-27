@@ -1,102 +1,80 @@
-<h2 style="margin-bottom:-3px;">Arctica Visualiser <strong>Round <span id="rnd">0</span></h2>
+<h2>Arctica Visualiser <strong>Round <span id="rnd">0</span></h2>
 
 <canvas id="chaos" width="900" height="900" style="border:3px solid #333;float:left;">
 
 </canvas>
-<div style="font-weight:normal";>
-	<div style="float:left;padding-left:20px; min-width:300px; font-size:15px">
-		<div style="border-left-color:orange;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
-			<strong>Player 3</strong><br/>
+<div>
+	<div style="float:left;padding:20px">
 		
-			Population: <span id="Population2"></span><br/>
-				LumberingUnits: <span id="LumberingUnits2"></span><br/>
-				MiningUnits: <span id="MiningUnits2"></span><br/>
-				FarmingUnits: <span id="FarmingUnits2"></span><br/>
-				CampfireUnits: <span id="CampfireUnits2"></span><br/>
-				ScoutUnits: <span id="ScoutUnits2"></span><br/>
-				AvailableUnits: <span id="AvailableUnits2"></span><br/><br/>
-				
-				Wood: <span id="Wood2"></span><br/>
-				Food: <span id="Food2"></span><br/>
-				Stone: <span id="Stone2"></span><br/>
-				Heat: <span id="Heat2"></span>
-		</div>	
+		<strong><span style="color:red;">&#9604;</span> Player 1</strong><br/>
+		Population: <span id="Population0"></span><br/>
+			AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
+			
+			Wood: <span id="Wood0"></span><br/>
+			Food: <span id="Food0"></span><br/>
+			Stone: <span id="Stone0"></span><br/>
+			Gold: <span id="Gold0"></span><br/>
+			Heat: <span id="Heat0"></span><br/>
 		<br/>
-		<div style="border-left-color:blue;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
-				<strong>Player 2</strong><br/>
+	</div>	
+	<div style="float:left;padding:20px">
 		
-				Population: <span id="Population1"></span><br/>
-				LumberingUnits: <span id="LumberingUnits1"></span><br/>
-				MiningUnits: <span id="MiningUnits1"></span><br/>
-				FarmingUnits: <span id="FarmingUnits1"></span><br/>
-				CampfireUnits: <span id="CampfireUnits1"></span><br/>
-				ScoutUnits: <span id="ScoutUnits1"></span><br/>
-				AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
-				
-				Wood: <span id="Wood1"></span><br/>
-				Food: <span id="Food1"></span><br/>
-				Stone: <span id="Stone1"></span><br/>
-				Heat: <span id="Heat1"></span>
-
-		</div>
-		<br/>
-	</div>
-	<div style="float:left;padding-left:20px; min-width:300px; font-size:15px">
-		
-		<div style="border-left-color:purple;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
-				<strong>Player 4</strong><br/>
-		
-				Population: <span id="Population3"></span><br/>
-				LumberingUnits: <span id="LumberingUnits3"></span><br/>
-				MiningUnits: <span id="MiningUnits3"></span><br/>
-				FarmingUnits: <span id="FarmingUnits3"></span><br/>
-				CampfireUnits: <span id="CampfireUnits3"></span><br/>
-				ScoutUnits: <span id="ScoutUnits3"></span><br/>
-				AvailableUnits: <span id="AvailableUnits3"></span><br/><br/>
-				
-				Wood: <span id="Wood3"></span><br/>
-				Food: <span id="Food3"></span><br/>
-				Stone: <span id="Stone3"></span><br/>
-				Heat: <span id="Heat3"></span>
-		</div>
-		<br/>
-		<div style="border-left-color:red;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
-			<strong>Player 1</strong><br/>
-		
-			Population: <span id="Population0"></span><br/>			
-				LumberingUnits: <span id="LumberingUnits0"></span><br/>
-				MiningUnits: <span id="MiningUnits0"></span><br/>
-				FarmingUnits: <span id="FarmingUnits0"></span><br/>
-				CampfireUnits: <span id="CampfireUnits0"></span><br/>
-				ScoutUnits: <span id="ScoutUnits0"></span><br/>
-				AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
-				Wood: <span id="Wood0"></span><br/>
-				Food: <span id="Food0"></span><br/>
-				Stone: <span id="Stone0"></span><br/>
-				Heat: <span id="Heat0"></span>
-		</div>
+		<strong><span style="color:blue;">&#9604;</span> Player 2</strong><br/>
+			Population: <span id="Population1"></span><br/>
+			AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
+			
+			Wood: <span id="Wood1"></span><br/>
+			Food: <span id="Food1"></span><br/>
+			Stone: <span id="Stone1"></span><br/>
+			Gold: <span id="Gold1"></span><br/>
+			Heat: <span id="Heat1"></span><br/>
 		<br/>
 	</div>
 </div>
-<div style="padding-top:10px" >
-<br/>
-	<input type="file" id="file-input" />
-	<div>
-		<input type="button" name="drawRound" onclick="clearRound();viewFirstRound();" value="First Round" />
-		<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Previous Round" /><br/>
-		<input type="number" min=0 max=2500 name="GoTo" value="50" id="inGoTo"/><input type="button" name="drawRound" onclick="clearRound();GoToRound();" value="Go To Round" /><br/>
-		<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
-		<input type="button" name="drawRound" onclick="clearRound();viewLastRound();" value="Last Round" /><br/>
-	<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
-	<div>
-
-	<div>
-		<h3>Play</h3>
-		<label for="PlaySpeed">Speed (tps)</label> <input type="number" min=1 max=300 name="PlaySpeed" value="50" id="inSpeed"/>
-		<input type="button" name="clearRound" onclick="Play(false)" value="Play" />
-		<input type="button" name="clearRound" onclick="Pause()" value="Pause" />
-		<input type="button" name="clearRound" onclick="Play(true)" value="Play from start" />
+<div>
+	<div style="float:left;padding:20px">
+		
+		<strong><span style="color:red;">&#9604;</span> Player 3</strong><br/>
+		Population: <span id="Population2"></span><br/>
+			AvailableUnits: <span id="AvailableUnits2"></span><br/><br/>
+			
+			Wood: <span id="Wood2"></span><br/>
+			Food: <span id="Food2"></span><br/>
+			Stone: <span id="Stone2"></span><br/>
+			Gold: <span id="Gold2"></span><br/>
+			Heat: <span id="Heat2"></span><br/>
+		<br/>
+	</div>	
+	<div style="float:left;padding:20px">
+		
+		<strong><span style="color:blue;">&#9604;</span> Player 4</strong><br/>
+			Population: <span id="Population3"></span><br/>
+			AvailableUnits: <span id="AvailableUnits3"></span><br/><br/>
+			
+			Wood: <span id="Wood3"></span><br/>
+			Food: <span id="Food3"></span><br/>
+			Stone: <span id="Stone3"></span><br/>
+			Gold: <span id="Gold3"></span><br/>
+			Heat: <span id="Heat3"></span><br/>
+		<br/>
 	</div>
+</div>
+<input type="file" id="file-input" />
+<div>
+<input type="button" name="drawRound" onclick="clearRound();viewFirstRound();" value="First Round" />
+<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Previous Round" /><br/>
+<input type="number" min=0 max=2500 name="GoTo" value="50" id="inGoTo"/><input type="button" name="drawRound" onclick="clearRound();GoToRound();" value="Go To Round" /><br/>
+<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
+<input type="button" name="drawRound" onclick="clearRound();viewLastRound();" value="Last Round" /><br/>
+<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
+<div>
+
+<div>
+<h3>Play</h3>
+<label for="PlaySpeed">Speed (tps)</label> <input type="number" min=1 max=300 name="PlaySpeed" value="50" id="inSpeed"/>
+<input type="button" name="clearRound" onclick="Play(false)" value="Play" />
+<input type="button" name="clearRound" onclick="Pause()" value="Pause" />
+<input type="button" name="clearRound" onclick="Play(true)" value="Play from start" />
 </div>
 <script>
 	let round=0;
@@ -104,6 +82,7 @@
 	let scoutData;
 	let nodeData;
 	let botData;
+	let territoryData;
 	let mapfactor = 20; //Scaling the xy of the whole map xy by 10
 	let outer=50;
 	let pc=["red","blue","orange","purple"];
@@ -114,7 +93,7 @@
 	var ctx=c.getContext("2d");
 	ctx.font = "12px Arial";
 	var playTmr;
-	var playing=false;
+	
 	function viewFirstRound(){
 		round=0;
 		drawRound(0);
@@ -130,15 +109,12 @@
 		round=gameData.length-1;
 		drawRound(0);
 	}
-	function Play(fromStart){
+	function Play(fromStart){		
 		if (fromStart){
 			round=0;
 		}
-		if (!playing)	{
-			let speed = document.getElementById("inSpeed").value;
-			playTmr=setInterval(PlayTimer, (1.0/speed)*1000);
-			playing=true;
-		}
+		let speed = document.getElementById("inSpeed").value;
+		playTmr=setInterval(PlayTimer, (1.0/speed)*1000);
 	}
 	
 	function PlayTimer(){
@@ -148,14 +124,12 @@
 		}
 		else{
 			window.clearInterval(playTmr)
-			playing=false;
 		}
 		
 	}
 	
 	function Pause(){
 		window.clearInterval(playTmr);
-		playing=false;
 	}
 	
 	//a = change in rounds
@@ -176,7 +150,6 @@
 			}
 		
 		nodeData=gameData[round].World.Map.Nodes;
-		
 		for (var key in nodeData) {
 			ix=nodeData[key].Position.X*mapfactor;
 			iy=nodeData[key].Position.Y*mapfactor;
@@ -188,6 +161,7 @@
 			if(nodeData[key].Type==1){ctx.fillStyle="brown";}
 			if(nodeData[key].Type==2){ctx.fillStyle="green";}
 			if(nodeData[key].Type==3){ctx.fillStyle="gray";}
+			if(nodeData[key].Type==4){ctx.fillStyle="gold";}
 			
 			ctx.strokeStyle = 'black';
 			ctx.fill();
@@ -210,79 +184,32 @@
 		
 		for (var key in botData) {
 			
+			ctx.globalAlpha = 0.1;
+			territoryData=botData[key].Territory;
+			for (var key2 in territoryData) {
+				ix=territoryData[key2].X*mapfactor;
+				iy=territoryData[key2].Y*mapfactor;
+				
+				ctx.beginPath();
+				ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
+				ctx.fillStyle=pc[key];
+				ctx.strokeStyle = pc[key];
+				ctx.fill();
+				ctx.stroke();
+				}
+			
+			ctx.globalAlpha = 1;
+			
 			ix=botData[key].BaseLocation.X*mapfactor;
 			iy=botData[key].BaseLocation.Y*mapfactor;
-			let lumber=0; 
-			let lumbertravel=0;
-			let mining=0; 
-			let miningtravel=0;
-			let farming=0; 
-			let farmingtravel=0;
-			let heat=0; 
-			let heattravel=0;
-			let scouts=0;
-			let scouttravel =0;
-			/*
-			 Error = 0,
-        Scout = 1,
-        Mine = 2,
-        Farm = 3,
-        Lumber = 4,
-        StartCampfire = 5
-			*/
-			botData[key].Actions.forEach(function(val){ 				
-				switch (val.ActionType){
-					case 1: if (val.TickActionStart<=round){					
-						scouts += val.NumberOfUnits;
-					}
-					else{
-						scouttravel += val.NumberOfUnits;
-					}
-					break;
-					case 2: 
-					if (val.TickActionStart<=round){					
-						mining += val.NumberOfUnits;
-					}
-					else{
-						miningtravel += val.NumberOfUnits;
-					}
-					break;
-					case 3: if (val.TickActionStart<=round){					
-						farming += val.NumberOfUnits;
-					}
-					else{
-						farmingtravel += val.NumberOfUnits;
-					}
-					break;
-					case 4: if (val.TickActionStart<=round){					
-						lumber += val.NumberOfUnits;
-					}
-					else{
-						lumbertravel += val.NumberOfUnits;
-					}
-					break;
-					case 5: if (val.TickActionStart<=round){					
-						heat += val.NumberOfUnits;
-					}
-					else{
-						heattravel += val.NumberOfUnits;
-					}
-					break;
-				}
-			});
 			
-			
-			document.getElementById("Population"+key).innerHTML = botData[key].Population ;
-			document.getElementById("LumberingUnits"+key).innerHTML = lumber+ " ("+lumbertravel+")";
-			document.getElementById("MiningUnits"+key).innerHTML = mining+ " ("+miningtravel+")";
-			document.getElementById("FarmingUnits"+key).innerHTML = farming+ " ("+farmingtravel+")";
-			document.getElementById("CampfireUnits"+key).innerHTML = heat+ " ("+heattravel+")";
-			document.getElementById("ScoutUnits"+key).innerHTML = scouts+ " ("+scouttravel+")";
+			document.getElementById("Population"+key).innerHTML = botData[key].Population;
 			document.getElementById("AvailableUnits"+key).innerHTML = botData[key].AvailableUnits;
 			document.getElementById("Wood"+key).innerHTML = botData[key].Wood;
 			document.getElementById("Food"+key).innerHTML = botData[key].Food;
 			document.getElementById("Stone"+key).innerHTML = botData[key].Stone;
 			document.getElementById("Heat"+key).innerHTML = botData[key].Heat;
+			document.getElementById("Gold"+key).innerHTML = botData[key].Gold;
 			
 			ctx.beginPath();
 			ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
@@ -291,6 +218,7 @@
 			ctx.fill();
 			ctx.stroke();
 			}
+		
 	}
 	
 	function clearRound(){
