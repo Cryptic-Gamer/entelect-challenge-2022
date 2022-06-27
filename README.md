@@ -1,8 +1,9 @@
 This visualiser plays the full game log:
-To activate this play:
+
+To activate this set the logger app settings to:
 {
   "RunnerUrl": "http://localhost",
-  "RunnerPort": "5000",
+ "RunnerPort": "5000",
   "LogDirectory": "",
   "GameStateLogFileName": "GameStateLog",
   "GameExceptionLogFileName": "GameExceptionLog",
