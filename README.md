@@ -1,3 +1,17 @@
+This visualiser plays the full game log:
+To activate this play:
+{
+  "RunnerUrl": "http://localhost",
+  "RunnerPort": "5000",
+  "LogDirectory": "",
+  "GameStateLogFileName": "GameStateLog",
+  "GameExceptionLogFileName": "GameExceptionLog",
+"CondencedLoggingToggle":  "false"
+}
+
+On my own device I have some issues generating the condensed log for tournament 2. So this works for now. 
+
+
 # entelect-challenge-2022
 Just a very basic visualiser for the Entelect Challenge 2022
 
