@@ -3,138 +3,70 @@
 <canvas id="chaos" width="900" height="900" style="border:3px solid #333;float:left;">
 
 </canvas>
-<div>
-	<div style="float:left;padding:20px">
-		
-		<strong><span style="color:red;">&#9604;</span> Player 1</strong><br/>
-		Population: <span id="Population0"></span><br/>
-			AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
-			
-			Wood: <span id="Wood0"></span><br/>
-			Food: <span id="Food0"></span><br/>
-			Stone: <span id="Stone0"></span><br/>
-			Gold: <span id="Gold0"></span><br/>
-			Heat: <span id="Heat0"></span><br/>
-		<br/>
-	</div>	
-	<div style="float:left;padding:20px">
-		
-		<strong><span style="color:blue;">&#9604;</span> Player 2</strong><br/>
-			Population: <span id="Population1"></span><br/>
-			AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
-			
-			Wood: <span id="Wood1"></span><br/>
-			Food: <span id="Food1"></span><br/>
-			Stone: <span id="Stone1"></span><br/>
-			Gold: <span id="Gold1"></span><br/>
-			Heat: <span id="Heat1"></span><br/>
-		<br/>
-	</div>
-</div>
-<div>
-	<div style="float:left;padding:20px">
-		
-		<strong><span style="color:red;">&#9604;</span> Player 3</strong><br/>
-		Population: <span id="Population2"></span><br/>
-			AvailableUnits: <span id="AvailableUnits2"></span><br/><br/>
-			
-			Wood: <span id="Wood2"></span><br/>
-			Food: <span id="Food2"></span><br/>
-			Stone: <span id="Stone2"></span><br/>
-			Gold: <span id="Gold2"></span><br/>
-			Heat: <span id="Heat2"></span><br/>
-		<br/>
-	</div>	
-	<div style="float:left;padding:20px">
-		
-		<strong><span style="color:blue;">&#9604;</span> Player 4</strong><br/>
-			Population: <span id="Population3"></span><br/>
-			AvailableUnits: <span id="AvailableUnits3"></span><br/><br/>
-			
-			Wood: <span id="Wood3"></span><br/>
-			Food: <span id="Food3"></span><br/>
-			Stone: <span id="Stone3"></span><br/>
-			Gold: <span id="Gold3"></span><br/>
-			Heat: <span id="Heat3"></span><br/>
-		<br/>
-	</div>
-</div>
-<input type="file" id="file-input" />
-<div>
-<input type="button" name="drawRound" onclick="clearRound();viewFirstRound();" value="First Round" />
-<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Previous Round" /><br/>
-<input type="number" min=0 max=2500 name="GoTo" value="50" id="inGoTo"/><input type="button" name="drawRound" onclick="clearRound();GoToRound();" value="Go To Round" /><br/>
-<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
-<input type="button" name="drawRound" onclick="clearRound();viewLastRound();" value="Last Round" /><br/>
-<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
-<div>
 
-<div>
-<h3>Play</h3>
-<label for="PlaySpeed">Speed (tps)</label> <input type="number" min=1 max=300 name="PlaySpeed" value="50" id="inSpeed"/>
-<input type="button" name="clearRound" onclick="Play(false)" value="Play" />
-<input type="button" name="clearRound" onclick="Pause()" value="Pause" />
-<input type="button" name="clearRound" onclick="Play(true)" value="Play from start" />
+<div style="float:left;padding:20px">
+	
+	<strong><span style="color:red;">&#9604;</span> Player 1</strong><br/>
+	Population: <span id="Population0"></span><br/>
+		TravellingUnits: <span id="TravellingUnits0"></span><br/>
+		LumberingUnits: <span id="LumberingUnits0"></span><br/>
+		MiningUnits: <span id="MiningUnits0"></span><br/>
+		FarmingUnits: <span id="FarmingUnits0"></span><br/>
+		AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
+		
+		Wood: <span id="Wood0"></span><br/>
+		Food: <span id="Food0"></span><br/>
+		Stone: <span id="Stone0"></span><br/>
+		Heat: <span id="Heat0"></span><br/>
+	<br/>
+</div>	
+	<div style="float:left;padding:20px">
+	
+	<strong><span style="color:blue;">&#9604;</span> Player 2</strong><br/>
+		Population: <span id="Population1"></span><br/>
+		TravellingUnits: <span id="TravellingUnits1"></span><br/>
+		LumberingUnits: <span id="LumberingUnits1"></span><br/>
+		MiningUnits: <span id="MiningUnits1"></span><br/>
+		FarmingUnits: <span id="FarmingUnits1"></span><br/>
+		AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
+		
+		Wood: <span id="Wood1"></span><br/>
+		Food: <span id="Food1"></span><br/>
+		Stone: <span id="Stone1"></span><br/>
+		Heat: <span id="Heat1"></span><br/>
+	<br/>
 </div>
+
+<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Last Round" />
+<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
+<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
+
 <script>
 	let round=0;
 	let gameData;
 	let scoutData;
 	let nodeData;
 	let botData;
-	let territoryData;
 	let mapfactor = 20; //Scaling the xy of the whole map xy by 10
 	let outer=50;
 	let pc=["red","blue","orange","purple"];
 	
 	let ix,iy;
-		
+	
+	fetch("GameStateLog.json")
+    .then(Response => Response.json())
+    .then(data => {
+        alert("JSON Loaded");
+		gameData=data;
+		drawRound(0);
+    });
+	
 	var c=document.getElementById("chaos");
 	var ctx=c.getContext("2d");
 	ctx.font = "12px Arial";
-	var playTmr;
-	
-	function viewFirstRound(){
-		round=0;
-		drawRound(0);
-	}
-	
-	function GoToRound(){
-	
-		let newround = document.getElementById("inGoTo").value;	
-		round = parseInt(newround);
-		drawRound(0);
-	}
-	function viewLastRound(){
-		round=gameData.length-1;
-		drawRound(0);
-	}
-	function Play(fromStart){		
-		if (fromStart){
-			round=0;
-		}
-		let speed = document.getElementById("inSpeed").value;
-		playTmr=setInterval(PlayTimer, (1.0/speed)*1000);
-	}
-	
-	function PlayTimer(){
-		if (round < gameData.length-1){
-			clearRound();
-			drawRound(1);
-		}
-		else{
-			window.clearInterval(playTmr)
-		}
-		
-	}
-	
-	function Pause(){
-		window.clearInterval(playTmr);
-	}
 	
 	//a = change in rounds
 	function drawRound(a){
-	
 		round=round+a;
 		scoutData=gameData[round].World.Map.ScoutTowers;
 		for (var key in scoutData) {
@@ -150,6 +82,7 @@
 			}
 		
 		nodeData=gameData[round].World.Map.Nodes;
+		
 		for (var key in nodeData) {
 			ix=nodeData[key].Position.X*mapfactor;
 			iy=nodeData[key].Position.Y*mapfactor;
@@ -161,7 +94,6 @@
 			if(nodeData[key].Type==1){ctx.fillStyle="brown";}
 			if(nodeData[key].Type==2){ctx.fillStyle="green";}
 			if(nodeData[key].Type==3){ctx.fillStyle="gray";}
-			if(nodeData[key].Type==4){ctx.fillStyle="gold";}
 			
 			ctx.strokeStyle = 'black';
 			ctx.fill();
@@ -173,9 +105,7 @@
 				ctx.fillRect(outer+ix-3, outer+iy-14, 20, 14);
 				ctx.strokeText(iu, outer+ix-3, outer+iy-3);
 				}
-			ctx.fillStyle="white";
-				ctx.strokeStyle = 'black';
-				ctx.strokeText(nodeData[key].Amount, outer+ix-3, outer+iy+13);
+			
 			}
 		
 		botData=gameData[round].Bots;
@@ -184,32 +114,19 @@
 		
 		for (var key in botData) {
 			
-			ctx.globalAlpha = 0.1;
-			territoryData=botData[key].Territory;
-			for (var key2 in territoryData) {
-				ix=territoryData[key2].X*mapfactor;
-				iy=territoryData[key2].Y*mapfactor;
-				
-				ctx.beginPath();
-				ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
-				ctx.fillStyle=pc[key];
-				ctx.strokeStyle = pc[key];
-				ctx.fill();
-				ctx.stroke();
-				}
-			
-			ctx.globalAlpha = 1;
-			
 			ix=botData[key].BaseLocation.X*mapfactor;
 			iy=botData[key].BaseLocation.Y*mapfactor;
 			
 			document.getElementById("Population"+key).innerHTML = botData[key].Population;
+			document.getElementById("TravellingUnits"+key).innerHTML = botData[key].TravellingUnits;
+			document.getElementById("LumberingUnits"+key).innerHTML = botData[key].LumberingUnits;
+			document.getElementById("MiningUnits"+key).innerHTML = botData[key].MiningUnits;
+			document.getElementById("FarmingUnits"+key).innerHTML = botData[key].FarmingUnits;
 			document.getElementById("AvailableUnits"+key).innerHTML = botData[key].AvailableUnits;
 			document.getElementById("Wood"+key).innerHTML = botData[key].Wood;
 			document.getElementById("Food"+key).innerHTML = botData[key].Food;
 			document.getElementById("Stone"+key).innerHTML = botData[key].Stone;
 			document.getElementById("Heat"+key).innerHTML = botData[key].Heat;
-			document.getElementById("Gold"+key).innerHTML = botData[key].Gold;
 			
 			ctx.beginPath();
 			ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
@@ -218,30 +135,11 @@
 			ctx.fill();
 			ctx.stroke();
 			}
-		
 	}
 	
 	function clearRound(){
 		ctx.clearRect(0, 0, c.width, c.height);
 	}
 	
-	function readSingleFile(e) {
-  var file = e.target.files[0];
-  if (!file) {
-    return;
-  }
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var contents = e.target.result;
-    gameData=JSON.parse(contents);
-	drawRound(0);
-	
-  };
-  reader.readAsText(file);
-}
-
-
-
-document.getElementById('file-input')
-  .addEventListener('change', readSingleFile, false);
 </script>
+
