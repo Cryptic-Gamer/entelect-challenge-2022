@@ -1,6 +1,6 @@
 This visualiser plays the full game log:
 
-**Requirement:
+**Requirement:**
 
 Please note that log files can become too large for the browser to handle. 
 I am using Kobus Van Schoor's log cleaner which removes some data not used in  my own visualiser, It also 
