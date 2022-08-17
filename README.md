@@ -12,7 +12,9 @@ As most actions last multiple turns. Halfing the roundframes does not alter our 
 You can clean the log by running: ./cleaner.py <log file> <step>
 
 For example i have a .bat file that contains the following:
+
 cleaner.py GameStateLog_2022-08-16_09-41-58.json 2
+
 cmd /k 
 
 That bat cleans the specified log and allows me to build. 
