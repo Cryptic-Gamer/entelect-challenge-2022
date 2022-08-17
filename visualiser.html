@@ -148,22 +148,22 @@
 	
 	//a = change in rounds
 	function drawRound(a){
-	
-		round=round+a;
-		scoutData=gameData[round].World.Map.ScoutTowers;
-		for (var key in scoutData) {
-			ix=scoutData[key].Position.X*mapfactor;
-			iy=scoutData[key].Position.Y*mapfactor;
-			
-			ctx.beginPath();
-			ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
-			ctx.fillStyle="black";
-			ctx.strokeStyle = 'black';
-			ctx.fill();
-			ctx.stroke();
-			}
 		
+			round=round+a;
 		
+			scoutData=gameData[round].World.Map.ScoutTowers;
+			for (var key in scoutData) {
+				ix=scoutData[key].Position.X*mapfactor;
+				iy=scoutData[key].Position.Y*mapfactor;
+
+				ctx.beginPath();
+				ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
+				ctx.fillStyle="black";
+				ctx.strokeStyle = 'black';
+				ctx.fill();
+				ctx.stroke();
+				}
+
 		//Loop and draw buildings
 		
 		nodeData=gameData[round].World.Map.Nodes;
@@ -171,17 +171,13 @@
 			ix=nodeData[key].Position.X*mapfactor;
 			iy=nodeData[key].Position.Y*mapfactor;
 			iu=nodeData[key].CurrentUnits;
-			
-			
+
 			//Draws map using images
 			
 			if(nodeData[key].Type==1){ctx.drawImage(woodImg, outer+ix-10, outer+iy-10);}
 			if(nodeData[key].Type==2){ctx.drawImage(foodImg, outer+ix-10, outer+iy-10);}
 			if(nodeData[key].Type==3){ctx.drawImage(stoneImg, outer+ix-10, outer+iy-10);}
 			if(nodeData[key].Type==4){ctx.drawImage(goldImg, outer+ix-10, outer+iy-10);}
-			
-			
-				
 			
 			/* //Draw Maps using blocks instead of images
 			ctx.beginPath();
@@ -211,7 +207,7 @@
 			ctx.stroke();
 		
 		botData=gameData[round].Bots;
-		document.getElementById("rnd").innerHTML = round;
+		document.getElementById("rnd").innerHTML = round*2;
 		//alert(JSON.stringify(botData));
 		
 		for (var key in botData) {
@@ -261,6 +257,8 @@
 				if(buildingData[key2].Type==6){ctx.fillStyle='gray';}
 				if(buildingData[key2].Type==7){ctx.fillStyle='green';}
 				if(buildingData[key2].Type==8){ctx.fillStyle='brown';}
+				if(buildingData[key2].Type==9){ctx.fillStyle='orange';}
+				if(buildingData[key2].Type==10){ctx.fillStyle='#cccccc';}
 				
 				ctx.strokeStyle = 'black';
 				ctx.fill();
