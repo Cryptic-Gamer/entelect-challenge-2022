@@ -2,7 +2,7 @@ This visualiser plays the full game log:
 
 **Requirement:**
 
-Please note that log files can become too large for the browser to handle. 
+Please note that log files become too large for the browser to handle. 
 I am using Kobus Van Schoor's log cleaner which removes some data not used in  my own visualiser, It also 
 https://gist.github.com/kobus-v-schoor/9e4d063fe28f0edce68ceaab63bc401a
 
