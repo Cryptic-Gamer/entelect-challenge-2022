@@ -1,16 +1,11 @@
 This visualiser plays the full game log:
 
-To activate this set the logger app settings to:
-{
-  "RunnerUrl": "http://localhost",
- "RunnerPort": "5000",
-  "LogDirectory": "",
-  "GameStateLogFileName": "GameStateLog",
-  "GameExceptionLogFileName": "GameExceptionLog",
-"CondencedLoggingToggle":  "false"
-}
+Please note that log files can become too large for the browser to handle. 
+I am using Kobus Van Schoor's log cleaner which removes some data not used in  my own visualiser, It also 
+https://gist.github.com/kobus-v-schoor/9e4d063fe28f0edce68ceaab63bc401a
 
-On my own device I have some issues generating the condensed log for tournament 2. So this works for now. 
+The implentation of halfing the visual rounds came from the programmer: Charl van Niekerk (@kortgat)
+As most actions last multiple turns. Halfing the roundframes does not alter our ability to read and analize matches.
 
 
 # entelect-challenge-2022
