@@ -3,79 +3,129 @@
 <canvas id="chaos" width="900" height="900" style="border:3px solid #333;float:left;background-color:#d2e5a8;">
 
 </canvas>
-<div>
-	<div style="float:left;padding:20px">
+<div style="font-weight:normal";>
+	<div style="float:left;padding-left:20px; min-width:250px; font-size:15px">
+		<div style="border-left-color:orange;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
+			<strong>Player 3</strong><br/>
 		
-		<strong><span style="color:red;">&#9604;</span> Player 1</strong><br/>
-		Population: <span id="Population0"></span><br/>
-			AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
-			
-			Wood: <span id="Wood0"></span><br/>
-			Food: <span id="Food0"></span><br/>
-			Stone: <span id="Stone0"></span><br/>
-			Gold: <span id="Gold0"></span><br/>
-			Heat: <span id="Heat0"></span><br/>
+			Population: <span id="Population2"></span><br/>
+				LumberingUnits: <span id="LumberingUnits2"></span><br/>
+				MiningUnits: <span id="MiningUnits2"></span><br/>
+				FarmingUnits: <span id="FarmingUnits2"></span><br/>
+				CampfireUnits: <span id="CampfireUnits2"></span><br/>
+				ScoutUnits: <span id="ScoutUnits2"></span><br/>
+				AvailableUnits: <span id="AvailableUnits2"></span><br/><br/>
+				
+				Wood: <span id="Wood2"></span><br/>
+				Food: <span id="Food2"></span><br/>
+				Stone: <span id="Stone2"></span><br/>
+				Heat: <span id="Heat2"></span><br/>
+				Gold: <span id="Gold2"></span><br/>
+				<br/>
+				Quaries: <span id="Quaries2"></span><br/>
+				Farmers Guilds: <span id="Farmers2"></span><br/>
+				Lumber Mills: <span id="Lumber2"></span><br/>
+				OutPosts: <span id="OutPosts2"></span><br/>
+				Roads: <span id="Roads2"></span><br/>
+		</div>	
 		<br/>
-	</div>	
-	<div style="float:left;padding:20px">
+		<div style="border-left-color:blue;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
+				<strong>Player 2</strong><br/>
 		
-		<strong><span style="color:blue;">&#9604;</span> Player 2</strong><br/>
-			Population: <span id="Population1"></span><br/>
-			AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
-			
-			Wood: <span id="Wood1"></span><br/>
-			Food: <span id="Food1"></span><br/>
-			Stone: <span id="Stone1"></span><br/>
-			Gold: <span id="Gold1"></span><br/>
-			Heat: <span id="Heat1"></span><br/>
-		<br/>
-	</div>
-</div>
-<div>
-	<div style="float:left;padding:20px">
-		
-		<strong><span style="color:red;">&#9604;</span> Player 3</strong><br/>
-		Population: <span id="Population2"></span><br/>
-			AvailableUnits: <span id="AvailableUnits2"></span><br/><br/>
-			
-			Wood: <span id="Wood2"></span><br/>
-			Food: <span id="Food2"></span><br/>
-			Stone: <span id="Stone2"></span><br/>
-			Gold: <span id="Gold2"></span><br/>
-			Heat: <span id="Heat2"></span><br/>
-		<br/>
-	</div>	
-	<div style="float:left;padding:20px">
-		
-		<strong><span style="color:blue;">&#9604;</span> Player 4</strong><br/>
-			Population: <span id="Population3"></span><br/>
-			AvailableUnits: <span id="AvailableUnits3"></span><br/><br/>
-			
-			Wood: <span id="Wood3"></span><br/>
-			Food: <span id="Food3"></span><br/>
-			Stone: <span id="Stone3"></span><br/>
-			Gold: <span id="Gold3"></span><br/>
-			Heat: <span id="Heat3"></span><br/>
-		<br/>
-	</div>
-</div>
-<input type="file" id="file-input" />
-<div>
-<input type="button" name="drawRound" onclick="clearRound();viewFirstRound();" value="First Round" />
-<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Previous Round" /><br/>
-<input type="number" min=0 max=2500 name="GoTo" value="50" id="inGoTo"/><input type="button" name="drawRound" onclick="clearRound();GoToRound();" value="Go To Round" /><br/>
-<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
-<input type="button" name="drawRound" onclick="clearRound();viewLastRound();" value="Last Round" /><br/>
-<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
-<div>
+				Population: <span id="Population1"></span><br/>
+				LumberingUnits: <span id="LumberingUnits1"></span><br/>
+				MiningUnits: <span id="MiningUnits1"></span><br/>
+				FarmingUnits: <span id="FarmingUnits1"></span><br/>
+				CampfireUnits: <span id="CampfireUnits1"></span><br/>
+				ScoutUnits: <span id="ScoutUnits1"></span><br/>
+				AvailableUnits: <span id="AvailableUnits1"></span><br/><br/>
+				
+				Wood: <span id="Wood1"></span><br/>
+				Food: <span id="Food1"></span><br/>
+				Stone: <span id="Stone1"></span><br/>
+				Heat: <span id="Heat1"></span><br/>
+				Gold: <span id="Gold1"></span><br/><br/>
+				Quaries: <span id="Quaries1"></span><br/>
+				Farmers Guilds: <span id="Farmers1"></span><br/>
+				Lumber Mills: <span id="Lumber1"></span><br/>
+				OutPosts: <span id="OutPosts1"></span><br/>
+				Roads: <span id="Roads1"></span><br/>
 
-<div>
-<h3>Play</h3>
-<label for="PlaySpeed">Speed (tps)</label> <input type="number" min=1 max=300 name="PlaySpeed" value="50" id="inSpeed"/>
-<input type="button" name="clearRound" onclick="Play(false)" value="Play" />
-<input type="button" name="clearRound" onclick="Pause()" value="Pause" />
-<input type="button" name="clearRound" onclick="Play(true)" value="Play from start" />
+		</div>
+		<br/>
+	</div>
+	<div style="float:left;padding-left:20px; min-width:250px; font-size:15px">
+		
+		<div style="border-left-color:purple;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
+				<strong>Player 4</strong><br/>
+		
+				Population: <span id="Population3"></span><br/>
+				LumberingUnits: <span id="LumberingUnits3"></span><br/>
+				MiningUnits: <span id="MiningUnits3"></span><br/>
+				FarmingUnits: <span id="FarmingUnits3"></span><br/>
+				CampfireUnits: <span id="CampfireUnits3"></span><br/>
+				ScoutUnits: <span id="ScoutUnits3"></span><br/>
+				AvailableUnits: <span id="AvailableUnits3"></span><br/><br/>
+				
+				Wood: <span id="Wood3"></span><br/>
+				Food: <span id="Food3"></span><br/>
+				Stone: <span id="Stone3"></span><br/>
+				Heat: <span id="Heat3"></span><br/>
+				Gold: <span id="Gold3"></span><br/>
+				<br/>
+				Quaries: <span id="Quaries3"></span><br/>
+				Farmers Guilds: <span id="Farmers3"></span><br/>
+				Lumber Mills: <span id="Lumber3"></span><br/>
+				OutPosts: <span id="OutPosts3"></span><br/>
+				Roads: <span id="Roads3"></span><br/>
+		</div>
+		<br/>
+		<div style="border-left-color:red;border-left-width:3px;border-left-style:solid;padding-left:5px;" >
+			<strong>Player 1</strong><br/>
+		
+			Population: <span id="Population0"></span><br/>			
+				LumberingUnits: <span id="LumberingUnits0"></span><br/>
+				MiningUnits: <span id="MiningUnits0"></span><br/>
+				FarmingUnits: <span id="FarmingUnits0"></span><br/>
+				CampfireUnits: <span id="CampfireUnits0"></span><br/>
+				ScoutUnits: <span id="ScoutUnits0"></span><br/>
+				AvailableUnits: <span id="AvailableUnits0"></span><br/><br/>
+				Wood: <span id="Wood0"></span><br/>
+				Food: <span id="Food0"></span><br/>
+				Stone: <span id="Stone0"></span><br/>
+				Heat: <span id="Heat0"></span><br/>
+				Gold: <span id="Gold0"></span><br/>
+				<br/>
+				Quaries: <span id="Quaries0"></span><br/>
+				Farmers Guilds: <span id="Farmers0"></span><br/>
+				Lumber Mills: <span id="Lumber0"></span><br/>
+				OutPosts: <span id="OutPosts0"></span><br/>
+				Roads: <span id="Roads0"></span><br/>
+		</div>
+		<br/>
+	</div>
 </div>
+<div style="padding-top:10px" >
+<br/>
+	<input type="file" id="file-input" />
+	<div>
+		<input type="button" name="drawRound" onclick="clearRound();viewFirstRound();" value="First Round" />
+		<input type="button" name="drawRound" onclick="clearRound();drawRound(-1);" value="Previous Round" /><br/>
+		<input type="number" min=0 max=2500 name="GoTo" value="50" id="inGoTo"/><input type="button" name="drawRound" onclick="clearRound();GoToRound();" value="Go To Round" /><br/>
+		<input type="button" name="drawRound" onclick="clearRound();drawRound(1);" value="Next Round" />
+		<input type="button" name="drawRound" onclick="clearRound();viewLastRound();" value="Last Round" /><br/>
+	<input type="button" name="clearRound" onclick="clearRound()" value="Clear Round" />
+	<div>
+
+	<div>
+		<h3>Play</h3>
+		<label for="PlaySpeed">Speed (tps)</label> <input type="number" min=1 max=300 name="PlaySpeed" value="50" id="inSpeed"/>
+		<input type="button" name="clearRound" onclick="Play(false)" value="Play" />
+		<input type="button" name="clearRound" onclick="Pause()" value="Pause" />
+		<input type="button" name="clearRound" onclick="Play(true)" value="Play from start" />
+	</div>
+</div>
+
 <script>
 	let round=0;
 	let gameData;
@@ -107,7 +157,7 @@
 	var ctx=c.getContext("2d");
 	ctx.font = "12px Arial";
 	var playTmr;
-	
+	var playing=false;
 	function viewFirstRound(){
 		round=0;
 		drawRound(0);
@@ -127,8 +177,11 @@
 		if (fromStart){
 			round=0;
 		}
-		let speed = document.getElementById("inSpeed").value;
-		playTmr=setInterval(PlayTimer, (1.0/speed)*1000);
+		if (!playing)	{
+			let speed = document.getElementById("inSpeed").value;
+			playTmr=setInterval(PlayTimer, (1.0/speed)*1000);
+			playing=true;
+		}
 	}
 	
 	function PlayTimer(){
@@ -138,17 +191,18 @@
 		}
 		else{
 			window.clearInterval(playTmr)
+			playing=false;
 		}
 		
 	}
 	
 	function Pause(){
 		window.clearInterval(playTmr);
+		playing=false;
 	}
 	
 	//a = change in rounds
-	function drawRound(a){
-		
+	function drawRound(a){ 
 			round=round+a;
 		
 			scoutData=gameData[round].World.Map.ScoutTowers;
@@ -230,14 +284,121 @@
 			
 			ix=botData[key].BaseLocation.X*mapfactor;
 			iy=botData[key].BaseLocation.Y*mapfactor;
+			let lumber=0; 
+			let lumbertravel=0;
+			let mining=0; 
+			let miningtravel=0;
+			let farming=0; 
+			let farmingtravel=0;
+			let heat=0; 
+			let heattravel=0;
+			let scouts=0;
+			let scouttravel =0;
+			let Quaries=0;
+			let QuariesTravel=0;
+			let FarmersGuild=0;
+			let FarmersGuildTravel=0;
+			let LumberMill=0;
+			let LumberMillTravel=0;
+			let Outpost=0;
+			let OutpostTravel=0;
+			let Road=0;
+			let RoadTravel=0;
 			
+botData[key].Actions.forEach(function(val){ 				
+				switch (val.ActionType){
+					case 1: if (val.TickActionStart<=round){					
+						scouts += val.NumberOfUnits;
+					}
+					else{
+						scouttravel += val.NumberOfUnits;
+					}
+					break;
+					case 2: 
+					if (val.TickActionStart<=round){					
+						mining += val.NumberOfUnits;
+					}
+					else{
+						miningtravel += val.NumberOfUnits;
+					}
+					break;
+					case 3: if (val.TickActionStart<=round){					
+						farming += val.NumberOfUnits;
+					}
+					else{
+						farmingtravel += val.NumberOfUnits;
+					}
+					break;
+					case 4: if (val.TickActionStart<=round){					
+						lumber += val.NumberOfUnits;
+					}
+					else{
+						lumbertravel += val.NumberOfUnits;
+					}
+					break;
+					case 5: if (val.TickActionStart<=round){					
+						heat += val.NumberOfUnits;
+					}
+					else{
+						heattravel += val.NumberOfUnits;
+					}
+					break;
+					case 6: if (val.TickActionStart<=round){					
+						Quaries += val.NumberOfUnits;
+					}
+					else{
+						QuariesTravel += val.NumberOfUnits;
+					}
+					break;
+					case 7: if (val.TickActionStart<=round){					
+						FarmersGuild += val.NumberOfUnits;
+					}
+					else{
+						FarmersGuildTravel += val.NumberOfUnits;
+					}
+					break;
+					case 8: if (val.TickActionStart<=round){					
+						LumberMill += val.NumberOfUnits;
+					}
+					else{
+						LumberMillTravel += val.NumberOfUnits;
+					}
+					break;
+					case 9: if (val.TickActionStart<=round){					
+						Outpost += val.NumberOfUnits;
+					}
+					else{
+						OutpostTravel += val.NumberOfUnits;
+					}
+					break;
+					case 10: if (val.TickActionStart<=round){					
+						Road += val.NumberOfUnits;
+					}
+					else{
+						RoadTravel += val.NumberOfUnits;
+					}
+					break;
+				}
+				}
+			)
 			document.getElementById("Population"+key).innerHTML = botData[key].Population;
+			document.getElementById("LumberingUnits"+key).innerHTML = lumber+ " ("+lumbertravel+")";
+			document.getElementById("MiningUnits"+key).innerHTML = mining+ " ("+miningtravel+")";
+			document.getElementById("FarmingUnits"+key).innerHTML = farming+ " ("+farmingtravel+")";
+			document.getElementById("CampfireUnits"+key).innerHTML = heat+ " ("+heattravel+")";
+			document.getElementById("ScoutUnits"+key).innerHTML = scouts+ " ("+scouttravel+")";
+
 			document.getElementById("AvailableUnits"+key).innerHTML = botData[key].AvailableUnits;
 			document.getElementById("Wood"+key).innerHTML = botData[key].Wood;
 			document.getElementById("Food"+key).innerHTML = botData[key].Food;
 			document.getElementById("Stone"+key).innerHTML = botData[key].Stone;
 			document.getElementById("Heat"+key).innerHTML = botData[key].Heat;
 			document.getElementById("Gold"+key).innerHTML = botData[key].Gold;
+			
+			
+			
+			
+			
 			
 			ctx.beginPath();
 			ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
@@ -254,18 +415,24 @@
 				ctx.beginPath();
 				ctx.rect(outer+ix-10, outer+iy-10, 20, 20);
 				
-				if(buildingData[key2].Type==6){ctx.fillStyle='gray';}
-				if(buildingData[key2].Type==7){ctx.fillStyle='green';}
-				if(buildingData[key2].Type==8){ctx.fillStyle='brown';}
-				if(buildingData[key2].Type==9){ctx.fillStyle='orange';}
-				if(buildingData[key2].Type==10){ctx.fillStyle='#cccccc';}
+				if(buildingData[key2].Type==6){ctx.fillStyle='gray'; Quaries++; }
+				if(buildingData[key2].Type==7){ctx.fillStyle='green'; FarmersGuild++; }
+				if(buildingData[key2].Type==8){ctx.fillStyle='brown'; LumberMill++; }
+				if(buildingData[key2].Type==9){ctx.fillStyle='orange';Outpost++;}
+				if(buildingData[key2].Type==10){ctx.fillStyle='#cccccc';Road++;}
 				
 				ctx.strokeStyle = 'black';
 				ctx.fill();
 				ctx.stroke();
 				}
-			
+			document.getElementById("Quaries"+key).innerHTML = Quaries+ " ("+QuariesTravel+")";
+			document.getElementById("Farmers"+key).innerHTML =FarmersGuild+ " ("+FarmersGuildTravel+")";
+			document.getElementById("Lumber"+key).innerHTML = LumberMill+ " ("+LumberMillTravel+")";
+			document.getElementById("OutPosts"+key).innerHTML = Outpost+ " ("+OutpostTravel+")";
+			document.getElementById("Roads"+key).innerHTML = Road+ " ("+RoadTravel+")";
 			}
+			
+			
 		
 	}
 	
